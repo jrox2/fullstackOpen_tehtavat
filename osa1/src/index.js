@@ -10,20 +10,31 @@ class App extends React.Component {
         good_counter: 0,
         neutral_counter: 0,
         bad_counter: 0,
-        total_counter: 0,
         allAnswers: []
       }
     }
-  
     statistics = (props) => {
+        
+        
+        return (
+            <div>
+                <h1>statistiikka</h1>
+                <div>hyvä {this.state.good_counter}</div>
+                <div>neutraali {this.state.neutral_counter}</div>
+                <div>huono {this.state.bad_counter}</div> 
+                <div><this.statistic /></div>
+            </div>
+            )
+    } 
+
+    statistic = (props) => {
         let yhtl = 0
         let avg = 0
         let pos = 0
         let posPercentage = 0
 
-        const historia = () => this.state.allAnswers.join(' ')
+        
         this.state.allAnswers.forEach((luku) => {
-               // console.log(luku)
                 yhtl += luku
                 
                avg = yhtl /  this.state.allAnswers.length
@@ -33,25 +44,16 @@ class App extends React.Component {
                }
                posPercentage = (pos / this.state.allAnswers.length) * 100
         })
-        
+
         return (
             <div>
-                <h1>statistiikka</h1>
-                <div>hyvä {this.state.good_counter}</div>
-                <div>neutraali {this.state.neutral_counter}</div>
-                <div>huono {this.state.bad_counter}</div> 
-                <div>total {this.state.total_counter}</div>  
-        
-                <p>yhteensä {props.yht} tehtävää</p>
-                <div>historia {historia()}</div>
-                <div>all {this.state.allAnswers}</div>
-                <div>Yhteensa {yhtl}</div>
-                <div>Avg {avg}</div>
-                <div>Positiivisia {posPercentage} %</div>
+                <div>Avg {avg.toFixed(2)}</div>
+                <div>Positiivisia {posPercentage.toFixed(2)} %</div>
             </div>
-            )
-    } 
-
+        )
+        
+    }
+   
     klikGood = () => {
         this.setState({
          good_counter: this.state.good_counter + 1,
@@ -96,9 +98,8 @@ class App extends React.Component {
         </div>
       )
     }
-  }
 
- 
+}
 
 
 ReactDOM.render(
