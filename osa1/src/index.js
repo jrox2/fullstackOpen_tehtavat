@@ -7,13 +7,14 @@ class App extends React.Component {
     super(props)
     this.state = {
       selected: 0,
-      pisteet:[0,0,0,0,0,0]
+      pisteet:[0, 0, 0, 0, 0, 0],
+      suurin: 0,
+      votesTotal: 0
       
     }
   }
 
-
-  nextAnekdote = () => () => {
+  nextAnecdote = () => () => {
 
     
     this.setState({  
@@ -21,27 +22,50 @@ class App extends React.Component {
     })
   }
 
-  voteAnekdote = (props) => () => {  
+  voteAnecdote = (props) => () => {  
+    
 
     const kopio = this.state.pisteet
     kopio[props] += 1
-    console.log(kopio)
-    
+    this.setState ({
+       suurin:  kopio.indexOf(Math.max(...kopio)),
+       votesTotal: this.state.votesTotal += 1
+    })
+}
+
+showMostVoted = (props) => {
+    if (this.state.votesTotal === 0) {
+        return (
+            <div>
+                <p>No votes yet given</p>
+            </div>
+        )
+    }
+    return (
+        <div>
+            <p>Anekdote with most votes:</p>
+            <p>{this.props.anecdotes[this.state.suurin]}</p>
+        </div>
+    )
 }
 
   render() {
+
     return (
       <div>
             <div>
                 {this.props.anecdotes[this.state.selected]}
             </div>
         <div>
-          <button onClick={this.voteAnekdote(this.state.selected)}>Vote</button>
-          <button onClick={this.nextAnekdote()}>Next anekdote </button>    
+          <button onClick={this.voteAnecdote(this.state.selected)}>Vote</button>
+          <button onClick={this.nextAnecdote()}>Next anekdote </button>    
         </div>
-      </div>
-    
-      
+        <div>
+            
+            <this.showMostVoted />
+            
+        </div>
+      </div> 
     )
   }
 }
