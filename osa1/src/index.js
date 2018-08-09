@@ -14,7 +14,13 @@ class App extends React.Component {
       }
     }
     statistics = (props) => {
-        
+         if (this.state.allAnswers.length === 0) {
+            return (
+                <div>
+                  <p>yhtään palautetta ei ole annettu</p>
+                </div>
+              )
+        } 
         
         return (
             <div>
@@ -22,7 +28,7 @@ class App extends React.Component {
                 <div>hyvä {this.state.good_counter}</div>
                 <div>neutraali {this.state.neutral_counter}</div>
                 <div>huono {this.state.bad_counter}</div> 
-                <div><this.statistic /></div>
+                <div><this.statistic/></div>
             </div>
             )
     } 
@@ -76,11 +82,12 @@ class App extends React.Component {
            })
     }
     
-
+    
     render() {
         
       return (
         <div> 
+            <h1>Anna palautetta</h1>
           <div>
             <button onClick={this.klikGood}>
               hyvä
