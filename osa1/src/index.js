@@ -44,7 +44,7 @@ class App extends React.Component {
                 yhtl += luku
                 
                avg = yhtl /  this.state.allAnswers.length
-               console.log('yhte', yhtl, ' avg ', avg)
+               //console.log('yhte', yhtl, ' avg ', avg)
                if (luku === 1) {
                 pos += 1 
                }
@@ -60,42 +60,51 @@ class App extends React.Component {
         
     }
    
-    klikGood = () => {
-        this.setState({
-         good_counter: this.state.good_counter + 1,
-         total_counter: this.state.total_counter + this.state.good_counter,
-         allAnswers: this.state.allAnswers.concat(1)
-        
-        })
-        
-    }
-    klikNeutral = () => {
-        this.setState({
-            neutral_counter: this.state.neutral_counter + 1,
-            allAnswers: this.state.allAnswers.concat(0)   
-           })
-    }
-    klikBad = () => {
-        this.setState({
-            bad_counter: this.state.bad_counter + 1,
-            allAnswers: this.state.allAnswers.concat(-1)   
-           })
-    }
     
     
+    kasvataYhdella = (arvo) => () => {
+        
+        console.log('arvo', arvo)
+
+
+        if (arvo === 'good_counter'){
+            this.setState({          
+                good_counter: this.state.good_counter + 1,
+                allAnswers: this.state.allAnswers.concat(1)
+            
+            
+            })
+        }
+        if (arvo === 'neutral_counter'){
+            this.setState({  
+                neutral_counter: this.state.neutral_counter + 1,
+                allAnswers: this.state.allAnswers.concat(0)
+            
+            })
+        }
+        if (arvo === 'bad_counter'){
+            this.setState({  
+                bad_counter: this.state.bad_counter + 1,
+                allAnswers: this.state.allAnswers.concat(-1)
+            
+            })
+        }  
+    }
+    
+
     render() {
         
       return (
         <div> 
             <h1>Anna palautetta</h1>
           <div>
-            <button onClick={this.klikGood}>
-              hyvä
+            <button onClick={this.kasvataYhdella('good_counter')}>
+                hyvä
             </button>
-            <button onClick={this.klikNeutral}>
+            <button onClick={this.kasvataYhdella('neutral_counter')}>
               neutraali
             </button>
-            <button onClick={this.klikBad}>
+            <button onClick={this.kasvataYhdella('bad_counter')}>
               huono
             </button>
             <div>
