@@ -2,12 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 class App extends React.Component {
+    
   constructor(props) {
     super(props)
     this.state = {
-      selected: 0
+      selected: 0,
+      pisteet:[0,0,0,0,0,0]
+      
     }
   }
+
 
   nextAnekdote = () => () => {
 
@@ -15,9 +19,15 @@ class App extends React.Component {
     this.setState({  
         selected: Math.floor(Math.random() * anecdotes.length),
     })
-
-
   }
+
+  voteAnekdote = (props) => () => {  
+
+    const kopio = this.state.pisteet
+    kopio[props] += 1
+    console.log(kopio)
+    
+}
 
   render() {
     return (
@@ -26,6 +36,7 @@ class App extends React.Component {
                 {this.props.anecdotes[this.state.selected]}
             </div>
         <div>
+          <button onClick={this.voteAnekdote(this.state.selected)}>Vote</button>
           <button onClick={this.nextAnekdote()}>Next anekdote </button>    
         </div>
       </div>
