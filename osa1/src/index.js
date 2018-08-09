@@ -25,10 +25,22 @@ class App extends React.Component {
         return (
             <div>
                 <h1>statistiikka</h1>
-                <div>hyvä {this.state.good_counter}</div>
-                <div>neutraali {this.state.neutral_counter}</div>
-                <div>huono {this.state.bad_counter}</div> 
-                <div><this.statistic/></div>
+                <table>
+                    
+                    <tbody>
+                        <tr>
+                            <td>hyvä</td><td> {this.state.good_counter}</td>
+                        </tr>
+                        <tr>
+                            <td>neutraali</td><td> {this.state.neutral_counter}</td>
+                        </tr>
+                        <tr>
+                            <td>huono</td><td> {this.state.bad_counter}</td> 
+                        </tr>      
+                        
+                    </tbody>
+                </table>
+                <this.statistic/>
             </div>
             )
     } 
@@ -52,10 +64,16 @@ class App extends React.Component {
         })
 
         return (
-            <div>
-                <div>Avg {avg.toFixed(2)}</div>
-                <div>Positiivisia {posPercentage.toFixed(2)} %</div>
-            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Avg</td><td> {avg.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>Positiivisia</td><td> {posPercentage.toFixed(2)} %</td>
+                    </tr>
+                </tbody>
+            </table>
         )
         
     }
@@ -64,8 +82,10 @@ class App extends React.Component {
     
     kasvataYhdella = (arvo) => () => {
         
-        console.log('arvo', arvo)
+        
 
+        console.log('arvo', arvo)
+        
 
         if (arvo === 'good_counter'){
             this.setState({          
