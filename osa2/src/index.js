@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Kurssi = (props) => {
+const Kurssit = (props) => {
   return (
     <div>
       
-      <Otsikko kurssi={props.kurssi}/>
-      <Sisalto kurssi={props.kurssi}/>
-      <Yhteensa kurssi={props.kurssi}/>
+      <Otsikko kurssit={props.kurssit}/>
+      <Sisalto kurssit={props.kurssit}/>
+      
     </div>
     )
 }
@@ -15,31 +15,36 @@ const Kurssi = (props) => {
 const Otsikko = (props) => {
     return (
       <div>
-        <h1>{props.kurssi.nimi}</h1>
+        <h1>{props.kurssit.nimi}</h1>
       </div>
     )
   }
 
-const Yhteensa = (props) => {
 
-  var tehtaviaYht = props.kurssi.osat.reduce(function(sum, amount) {
-    return sum + amount.tehtavia;
-  }, 0);
-  
-
-    return (
-        <div>
-        <p>yhteensä {tehtaviaYht} tehtävää </p>
-        </div>
-        )
-}
 
 const Sisalto = (props) => {
-   const rivit = () => props.kurssi.osat.map((osa, i) => <li key={i}>{osa.nimi}  {osa.tehtavia}</li>)
+   
+   const kurssit = () => props.kurssit.map((kurssi, index) =>
+    <div key={index}>
+        <h3>{kurssi.nimi}</h3>
+        <ul>
+            {Object.values(kurssi.osat).map((kurssi, index) =>
+            <li key={index}>{kurssi.nimi}  {kurssi.tehtavia}</li>
+            )}
+        </ul>
+        <p>Tehtäviä yhteensä: {Object.values(kurssi.osat).reduce(function(sum, amount) {
+          return sum + amount.tehtavia;
+          }, 0) }
+          </p>
+        
+    </div>
+)
+
     return (
         <div>
+            <h1>Opetusohjelma</h1>
              <ul>
-              {rivit()}
+              {kurssit()}
             </ul>
         </div>
         )
@@ -49,30 +54,50 @@ const Sisalto = (props) => {
 
 
 const App = () => {
-  const kurssi = {
-    nimi: 'Half Stack -sovelluskehitys',
-    osat: [
+    const kurssit = [
       {
-        nimi: 'Reactin perusteet',
-        tehtavia: 10,
-        id: 1
+        nimi: 'Half Stack -sovelluskehitys',
+        id: 1,
+        osat: [
+          {
+            nimi: 'Reactin perusteet',
+            tehtavia: 10,
+            id: 1
+          },
+          {
+            nimi: 'Tiedonvälitys propseilla',
+            tehtavia: 7,
+            id: 2
+          },
+          {
+            nimi: 'Komponenttien tila',
+            tehtavia: 14,
+            id: 3
+          }
+        ]
       },
       {
-        nimi: 'Tiedonvälitys propseilla',
-        tehtavia: 7,
-        id: 2
-      },
-      {
-        nimi: 'Komponenttien tila',
-        tehtavia: 14,
-        id: 3
+        nimi: 'Node.js',
+        id: 2,
+        osat: [
+          {
+            nimi: 'Routing',
+            tehtavia: 3,
+            id: 1
+          },
+          {
+            nimi: 'Middlewaret',
+            tehtavia: 7,
+            id: 2
+          }
+        ]
       }
     ]
-  }
+  
 
   return (
     <div>
-      <Kurssi kurssi={kurssi}/>
+      <Kurssit kurssit={kurssit}/>
       
     </div>
   )
