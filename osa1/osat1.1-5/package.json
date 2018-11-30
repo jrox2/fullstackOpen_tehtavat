@@ -1,0 +1,22 @@
+{
+  "name": "tehtavat_osa2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.1.0",
+    "gatsby-cli": "^2.4.1",
+    "npm": "^6.4.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "server": "json-server -p3000 db.json"
+  },
+  "proxy": "http://localhost:3001"
+}
