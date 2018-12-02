@@ -1,0 +1,58 @@
+html {
+    font-family: var(--font-font_family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif);
+}
+
+h1 {
+    color: green;
+    font-style: italic;
+  }
+  
+  .note {
+    color: grey;
+    padding-top: 5px;
+    font-size: 15px;
+  }
+  
+  .error {
+    color: red;
+    background: #ffffff;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .success {
+    color: green;
+    background: #ffffff;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .linkRow {
+    margin: 15px;
+  }
+
+  .clickableElement {
+    cursor: pointer;
+    font-weight: bold;
+    color: #008489;
+  }
+
+  .clickableElement:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .hidden {
+      display: none;
+  }
+
+  .visible {
+      display: block;
+  }

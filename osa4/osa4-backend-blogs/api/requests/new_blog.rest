@@ -1,0 +1,11 @@
+POST http://localhost:3000/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Impyb25uYmVyIiwiaWQiOiI1YmVjMTU4YTNiMGFiMWVmMzhjODk0M2MiLCJpYXQiOjE1NDI2Mjk5MzF9.eeQ4dhQpQPgvSKibdZ4N1Pt8wmZmuVg7Qr3acmzbo-0
+
+{
+  "title": "Roth sub-10",
+  "author": "Mark Allen",
+  "url": "http://triathlonhaaste.blogspot.com/",
+  "likes": 1,
+  "user": "5bec0bd5137fe9eb2844e5d4"
+}

@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "username": "maxVer",
+  "name": "Max Verstappen",
+  "password": "salainen",
+  "adult": null,
+  "blogs": []
+}
