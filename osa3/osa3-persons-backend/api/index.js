@@ -64,7 +64,6 @@ app.get('/', function (req, res) {
   
   app.put('/api/persons/:id', (request, response) => {
     Person
-      .find
       .findById(request.params.id)
       .update(request.body)
       .then(person => {
@@ -107,23 +106,7 @@ app.get('/', function (req, res) {
       return response.status(400).json({error: 'content missing'})
     }
   
-    /* Person
-      .find({},  {__v: 0})
-      .then(persons => {
-        response.json(persons.map(formatPerson))
-      })
-
-    let testPersons = persons.map()
-
-    console.log('testPersons', testPersons) */
-
-    /* const nameTest = nameObject.name
-    
-    let persons = this.state.persons
-
-    const existingName = testPersons.find( testName => testName.name === nameTest ) */
-
-    const person = new Person({
+     const person = new Person({
       name: body.name,
       number: body.number
     })
