@@ -3,11 +3,14 @@ const { app, server } = require('../index')
 const api = supertest(app)
 const Blog = require('../models/blog')
 
+
 const { format, initialBlogs, blogsInDb } = require('../utils/list_helper')
 
 
 beforeAll(async () => {
   await Blog.remove({})
+  
+
 
   for (let blog of initialBlogs) {
     let blogObject = new Blog(blog)
@@ -43,11 +46,11 @@ test('there are two blogs', async () => {
 
     test('POST /api/blogs succeeds with valid data', async () => {
       const blogsAtStart = await blogsInDb()
-
+      
       const newBlog = 
     {
       title: 'Kona sub-9',
-      author: 'Mark Allen',
+      author: 'Dave Scott',
       url: 'http://triathlonhaaste.blogspot.com/',
       likes: 1
     }
