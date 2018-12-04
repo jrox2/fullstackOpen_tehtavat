@@ -9,6 +9,7 @@ const Blog = ({blog}) => {
       {blog.author}
       {blog.url}
       {blog.likes}
+      <button onClick={onClick}>Like</button>
     </div>  
     
   </div>

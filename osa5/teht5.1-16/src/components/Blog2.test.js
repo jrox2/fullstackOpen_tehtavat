@@ -35,15 +35,18 @@ describe.only('<Blog />', () => {
         onClick={mockHandler}
       />
     )
-  
-    const nameDiv = blogComponent.find('.nameDiv')
-    nameDiv.simulate('click')
-  
-    // expect(mockHandler.mock.calls.length).toBe(1)
 
+  
     const contentDiv = blogComponent.find('.contentDiv')
     
     expect(contentDiv.text()).toContain(blog.likes)
+
+    const button = blogComponent.find('button')
+    button.simulate('click')
+  
+    expect(mockHandler.mock.calls.length).toBe(1)
+
+    
   })
 
 })
